@@ -124,6 +124,16 @@ body * {
     box-shadow: 0px 10px 40px -12px var(--backgroundloginbuttoncolor);
 }
 
+.link-storyset {
+    color: var(--textleftcolor);
+    text-decoration: none;
+    padding-bottom: 2px;
+}
+
+.link-storyset:hover {
+    text-decoration: underline;
+}
+
 /* Parâmetros para responsividade em outros dispositivos */
 /* Dica: para testar a responsividade do site dentro do Google Chrome, faça a inspeção da pagina e clique em Togle Device Toolbar, selecione o dispositivo e faça os testes */
 

@@ -39,7 +39,7 @@ if (!empty($pagina)) {
         $dados .= "<th scope='col'>Preço</th>";
         $dados .= "<th scope='col'>Motor</th>";
         $dados .= "<th scope='col'>Velocidade Max.</th>";
-        $dados .= "<th scope='col'>Visualizar</th>";
+        $dados .= "<th scope='col'>Manutenção</th>";
 
         $dados .= "</tr>";
         $dados .= "</thead>";

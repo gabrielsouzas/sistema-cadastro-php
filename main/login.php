@@ -53,8 +53,9 @@
 <body>
     <div class="main-login">
         <div class="left-login">
-            <h1>Sistema de Venda de Carros</h1>
+            <h1>Sistema de Cadastro de Carros</h1>
             <img class="left-login-image" src="../image/venda-carros.svg" alt="Venda de Carros Animação">
+            <a class="link-storyset" href="https://storyset.com/money">Money illustrations by Storyset</a>
         </div>
         <form action="" method="POST">
             <div class="right-login">
