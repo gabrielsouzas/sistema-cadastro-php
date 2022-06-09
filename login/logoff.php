@@ -7,5 +7,5 @@
     session_destroy();
 
     // Redireciona para a tela de login
-    header("Location: login.php");
+    header("Location: ../main/login.php");
 ?>

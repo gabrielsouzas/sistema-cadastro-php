@@ -10,7 +10,7 @@
     }
 
     if (!isset($_SESSION['codigo'])) {
-        die("Você não pode acessar essa página porque não está logado.<p><a href=\"login.php\">Entrar</a></p>");
+        die("Você não pode acessar essa página porque não está logado.<p><a href=\"../main/login.php\">Entrar</a></p>");
     }
 
 ?>

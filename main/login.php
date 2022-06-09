@@ -1,5 +1,5 @@
 <?php
-    include('conexao.php');
+    include('../controller/conexao.php');
 
     if (isset($_POST['usuario']) || isset($_POST['senha'])) {
         if (strlen($_POST['usuario']) == 0) {
@@ -29,8 +29,9 @@
                 // Seta a sessão para o usuario logado
                 $_SESSION['codigo'] = $usuario['codigo'];
                 $_SESSION['usuario'] = $usuario['usuario'];
+                $_SESSION['nome'] = $usuario['nome'];
 
-                header("Location: index.php");
+                header("Location: ../main/index.php");
 
             } else {
                 echo "Falha ao logar! Usuário ou senha incorretos.";
@@ -46,14 +47,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="stylesheet" href="../css/style-login.css">
     <title>Login - Sistema de Venda de Carros</title>
 </head>
 <body>
     <div class="main-login">
         <div class="left-login">
             <h1>Sistema de Venda de Carros</h1>
-            <img class="left-login-image" src="image/venda-carros.svg" alt="Venda de Carros Animação">
+            <img class="left-login-image" src="../image/venda-carros.svg" alt="Venda de Carros Animação">
         </div>
         <form action="" method="POST">
             <div class="right-login">

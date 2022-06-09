@@ -1,6 +1,6 @@
 <?php
-      include_once "conexao.php";
-      include "protect.php";
+      include_once "../controller/conexao.php";
+      include "../login/protect.php";
   ?>
 
 <!doctype html>
@@ -12,13 +12,13 @@
     <title>Venda Automotiva</title>
     
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Estilo customizado para esse template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
     
     <!-- Estilo manual -->
-    <link rel="stylesheet" href="css/estilo.css">    
+    <link rel="stylesheet" href="../css/estilo.css">    
   </head>
   <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -28,8 +28,9 @@
     </button>
     <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Buscar" aria-label="Search">
     <div class="navbar-nav">
+      
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="logoff.php">Sair</a>
+        <a class="nav-link px-3" href="../login/logoff.php">Sair</a>
       </div>
     </div>
   </header>
@@ -111,10 +112,11 @@
           </ul>
         </div>
       </nav>
+      <div class="user-name">Bem vindo <?php echo " " . $_SESSION['nome']; ?></div>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h3>Ben vindo <?php echo " " . $_SESSION['usuario']; ?></h3>
+         
           <h1 class="h2">Carros</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
@@ -412,12 +414,12 @@
     </div>
     <!-- Fim Model Editar Carro-->
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
     
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-      <script src="js/dashboard.js"></script>
+      <script src="../js/dashboard.js"></script>
       
-      <script src="js/interacao.js"></script>
+      <script src="../js/interacao.js"></script>
     </body>
 </html>

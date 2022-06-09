@@ -1,6 +1,6 @@
 <?php
     // Inclui a conexão com o Banco
-    include_once "../conexao.php";
+    include_once "../controller/conexao.php";
 
     // Recebe os dados do Javascript
     $codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_NUMBER_INT);

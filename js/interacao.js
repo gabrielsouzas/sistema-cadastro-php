@@ -1,7 +1,7 @@
 const listarCarros = async(pagina) => {
     
     // Aguarda para prosseguir até ter recebido os dados do listar-carros.php
-    const dados = await fetch("./controller/listar-carros.php?pagina=" + pagina); //?pagina=" + pagina);
+    const dados = await fetch("../controller/listar-carros.php?pagina=" + pagina); //?pagina=" + pagina);
     // Retorno de objetos
     const resposta = await dados.json();
     
@@ -44,7 +44,7 @@ if (cadCarroForm) {
         document.getElementById("cad-carro-btn").value = "Salvando..."
 
         // Aguarda o retorno da inserção
-        const dados = await fetch("controller/inserir-carro.php", {
+        const dados = await fetch("../controller/inserir-carro.php", {
             method: "POST",
             body: dadosForm
         });
@@ -74,7 +74,7 @@ async function visCarro(codigo){
     
     
     // Se não utilizar o await ele não aguarda finalizar o retorno dos dados
-    const dados = await fetch('./controller/visualizar-carro.php?codigo=' + codigo);
+    const dados = await fetch('../controller/visualizar-carro.php?codigo=' + codigo);
 
     // Recebe os dados processsados e transforma em objeto com json
     const resposta = await dados.json();
@@ -107,7 +107,7 @@ async function editCarro(codigo){
     // Oculta a mensagem de erro caso esteja com erro
     document.getElementById("msgAlertaErroEdit").innerHTML = "";
     // Pega os dados buscados do método visualizar-carro.php (retorna um carro peo código) e coloca na constante dados
-    const dados = await fetch('./controller/visualizar-carro.php?codigo=' + codigo);
+    const dados = await fetch('../controller/visualizar-carro.php?codigo=' + codigo);
     // Aguarda os dados serem transformados em objeto e retorna na constante resposta
     const resposta = await dados.json();
 
@@ -148,7 +148,7 @@ if (editForm) {
         document.getElementById("edit-carro-btn").value = "Salvando..."
 
         // Envia os dados para o editar-carro.php que apenas aguarda os dados pelo método POST e os insere no banco
-        const dados = await fetch("./controller/editar-carro.php", {
+        const dados = await fetch("../controller/editar-carro.php", {
             // Chama o método POST do editar-carro.php
             method: "POST", 
             // Passa os dados
@@ -178,7 +178,7 @@ async function apagCarro(codigo) {
     // Caso a resposta seja positiva ele prossegue com a exclusão
     if (confirmar == true) {
         // Faz uma requisição para um arquivo php
-        const dados = await fetch('./controller/apagar-carro.php?codigo=' + codigo);
+        const dados = await fetch('../controller/apagar-carro.php?codigo=' + codigo);
         const resposta = await dados.json();
 
         if (!resposta['status']) {

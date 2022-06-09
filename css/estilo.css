@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -75,4 +77,30 @@ div#container {
 #btn_tabela {
     font-weight: bold;
     color: rgb(10, 70, 138);
+}
+
+.user-name {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    height: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 3px;
+}
+
+#sidebarMenu {
+    background-image: linear-gradient(-30deg, rgba(128, 128, 128, 0.623), rgba(172, 169, 169, 0.692), rgb(255, 251, 251))!important;
+}
+
+#btn-visualizar, #btn-editar {
+    margin-right: 4px;
+}
+
+#btn-editar {
+    color: rgb(107, 89, 19);
+    border: 1px solid rgb(107, 89, 19);
+}
+
+#btn-editar:hover {
+    color: black;
 }
