@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+:root {
+    /* Declaração das variáveis das cores*/
+    --backgroundcolor: #201b2c;
+    --backgroundlogincolor: #2f2841;
+    --backgroundloginbuttoncolor: #00ff88;
+    --backgroundtextfieldcolor: #514869;
+    --textleftcolor: #77ffc0;
+    --textlogincolor: #00ff88;
+    --textloginbuttoncolor: #2b134b;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* coloca borda em todos os itens */
+body * {
+    box-sizing: border-box;
+}
+
+.main-login {
+    width: 100vw; /*tamanho de 100% em relação a ViewPort Width*/
+    height: 100vh; /*tamanho de 100% em relação a ViewPort Height*/
+    background: var(--backgroundcolor);
+    display: flex; /* o flex deixa tudo lado a lado */
+    justify-content: center; /* centraliza as coisas no eixo x */
+    align-items: center; /* centraliza as coisas no eixo y */
+}
+
+.left-login {
+    width: 50vw; /*tamanho de 50% em relação a ViewPort Width*/
+    height: 100vh; /* ocupa 100% da tela*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* coloca o item em coluna embaixo do item anterior */
+}
+
+/* aponta para o H1 dentro da div left-login */
+.left-login > h1 {
+    font-size: 3vw; /* titulo ajustavel a pagina*/
+    color: var(--textleftcolor);
+}
+
+.left-login-image {
+    width: 35vw;
+}
+
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%; /* usa a % para usar 60% da div*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px; /* margens de dentro do elemento, no caso são 30px em cima e em baixo e 35px nas laterais */
+    background: var(--backgroundlogincolor);
+    border-radius: 20px;
+    /*  sombra: centro baixo blur cor*/
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card-login > h1{
+    color: var(--textlogincolor);
+    font-weight: 800;
+    margin: 0;
+
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* a esquerda*/
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: var(--backgroundtextfieldcolor);
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box; /* o CSS vai colocar uma colizão entre a div filho e a div pai, assim a div filho nunca vai passar a div pai */
+}
+
+.textfield > label {
+    color: #f0ffffde;
+    margin-bottom: 10px;
+}
+
+.textfield > input::placeholder {
+    color: #f0ffff94;
+}
+
+.btn-login {
+    width: 100%; /* expande o botão ao tamanho da div */
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--textloginbuttoncolor);
+    background: var(--backgroundloginbuttoncolor);
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px var(--backgroundloginbuttoncolor);
+}
+
+/* Parâmetros para responsividade em outros dispositivos */
+/* Dica: para testar a responsividade do site dentro do Google Chrome, faça a inspeção da pagina e clique em Togle Device Toolbar, selecione o dispositivo e faça os testes */
+
+/* Quando a tela for menor que 950 pixels faz essas alterações */
+@media only screen and (max-width: 950px){
+    .card-login{
+        width: 85%;
+    }
+}
+
+/* Quando a tela for menor que 600 pixels faz essas alterações */
+@media only screen and (max-width: 600px){
+    .main-login {
+        flex-direction: column; /* coloca todos os itens em coluna*/
+    }
+    .left-login > h1 {
+        display: none; /* remove este h1 */
+    }
+    /* Deixa as duas divs ocupando todo o espaço da tela */
+    .left-login {
+        width: 100%;
+        height: auto;
+    }
+    .right-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .left-login-image {
+        width: 50vw;
+    }
+
+    .card-login {
+        width: 90%;
+    }
+}
