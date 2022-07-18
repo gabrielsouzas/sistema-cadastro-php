@@ -28,12 +28,6 @@
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo velocidade máxima!</div>"];
     } else {
         // Editar no BD
-        $query = "INSERT INTO carro(
-            carro_marca, carro_cor, carro_aro, carro_conversivel, 
-            carro_placa, carro_tipo, carro_preco, carro_motor, carro_velocidademax)
-          VALUES (:carro_marca, :carro_cor, :carro_aro, :carro_conversivel, 
-            :carro_placa, :carro_tipo, :carro_preco, :carro_motor, :carro_velocidademax);";
-
         $query = "UPDATE carro
                   SET carro_marca=:carro_marca, carro_cor=:carro_cor, carro_aro=:carro_aro, carro_conversivel=:carro_conversivel, 
                       carro_placa=:carro_placa, carro_tipo=:carro_tipo, carro_preco=:carro_preco, carro_motor=:carro_motor, carro_velocidademax=:carro_velocidademax
