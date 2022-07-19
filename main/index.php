@@ -134,7 +134,7 @@
           <span id="msgAlerta"></span>
         </div>
         <!--<div class="table-responsive">-->
-            <span class="listar-carros"></span>
+            <span class="listar-carro"></span>
 
           <!-- Configuração da tabela anterior
           <table class="table table-secondary table-striped table-sm">

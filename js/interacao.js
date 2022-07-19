@@ -18,8 +18,29 @@ const listarCarros = async(pagina) => {
     }
 }
 
-listarCarros(1);
+//listarCarros(1);
 
+const listar = async(pagina, tabela) => {
+    
+    // Aguarda para prosseguir até ter recebido os dados do listar-'nome_da_tabela'.php
+    const dados = await fetch("../controller/listar-"+tabela+".php?pagina=" + pagina); //?pagina=" + pagina);
+    // Retorno de objetos
+    const resposta = await dados.json();
+    
+
+    // Verifica se o indice status retornou true ou false
+    if (!resposta['status']) {
+        document.getElementById("msgAlerta").innerHTML = resposta['msg'];
+    } else {
+        const conteudo = document.querySelector(".listar-"+tabela);
+        if (conteudo) {
+            // Se existir o seletor no index.html ele insere neste seletor a resposta do listar-'nome_da_tabela'.php com o indice 'dados'
+            conteudo.innerHTML = resposta['dados'];
+        }
+    }
+}
+
+listar(1, "carro");
 
 // Cadastro de carro no Banco de Dados em PHP
 const cadCarroForm = document.getElementById("cad-carro-form")
