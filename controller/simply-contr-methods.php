@@ -1,6 +1,6 @@
 <?php 
 
-    function returnList($table, $order, $columns, $pagina){
+    function returnList($table, $order, $columns, $pagina, $qnt_result_pg){
     
         // Inclui a conexão com o Banco
         include_once "../controller/conexao.php";
@@ -8,7 +8,7 @@
         if (!empty($pagina)) {
             
             // Calcular o inicio da visualização
-            $qnt_result_pg = 10; // Quantidade de registro por página
+            //$qnt_result_pg = 10; // Quantidade de registro por página
             $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
             // Consulta para recuperar os registros do Banco de dados
@@ -83,19 +83,19 @@
                 $dados .= "<ul class='pagination justify-content-center'>";
 
                 // Primeira página
-                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar(1)'>Primeira</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar(1, \"$table\")'>Primeira</a></li>";
 
                 // Botão Anterior
                 $ant_pag = $pagina;
                 if (($pagina - 1) >= 1) {
                     $ant_pag = $pagina - 1;
                 }
-                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($ant_pag)'>Anterior</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($ant_pag, \"$table\")'>Anterior</a></li>";
                 
                 // Imprime os links baseado na $max_links (Botões numerados anteriores)
                 for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) { 
                 if ($pag_ant >= 1) {
-                    $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($pag_ant)'>$pag_ant</a></li>";
+                    $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($pag_ant, \"$table\")'>$pag_ant</a></li>";
                 }
                 }
 
@@ -104,7 +104,7 @@
                 // Imprime os links baseado na $max_links (Botões numerados posteriores)
                 for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) { 
                 if ($pag_dep <= $quantidade_pg) {
-                    $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($pag_dep)'>$pag_dep</a></li>";
+                    $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($pag_dep, \"$table\")'>$pag_dep</a></li>";
                 }
                 }
 
@@ -113,10 +113,10 @@
                 if (($pagina + 1) <= $quantidade_pg) {
                 $prox_pag = $pagina + 1;
                 }
-                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($prox_pag)' >Próxima</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($prox_pag, \"$table\")' >Próxima</a></li>";
 
                 // Última página
-                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($quantidade_pg)'>Última</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listar($quantidade_pg, \"$table\")'>Última</a></li>";
                 $dados .= "</ul>";
                 $dados .= "</nav>";
                 
