@@ -49,7 +49,7 @@
                         $dados .= "<td>$value</td>";
                     }
                     
-                    $cod = current($linha);
+                    $cod = reset($linha);
                     
 
                     $dados .= "<td>";

@@ -92,7 +92,7 @@ if (cadCarroForm) {
 // Visualizar os dados do Carro
 // async porque usa o await que espera a execução de algum retorno de dados antes de prosseguir para o próximo comando dentro da função
 async function visCarro(codigo){
-    
+    console.log(codigo);
     
     // Se não utilizar o await ele não aguarda finalizar o retorno dos dados
     const dados = await fetch('../controller/visualizar-carro.php?codigo=' + codigo);
