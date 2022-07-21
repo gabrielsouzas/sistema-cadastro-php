@@ -45,12 +45,13 @@ listar(1, "carro");
 // Cadastro de um registro no Banco de Dados em PHP
 function cadastrar(tabela) {
     const cadForm = document.getElementById("cad-"+tabela+"-form")
-
+    
     // Recebee o SELETOR da janela modal
     const cadModal = new bootstrap.Modal(document.getElementById("cad-"+tabela+"-modal"))
 
     // Somente acessa o IF quando existir o SELETOR cad-tabela-form
     if (cadForm) {
+        
         // Aguarda o usuário clicar no botão salvar
         cadForm.addEventListener("submit", async(e) => {
             // Não permitir a atualização da página
@@ -61,9 +62,9 @@ function cadastrar(tabela) {
             // Esse log vai aparecer em inspecionar >> console >> info 
 
             const dadosForm = new FormData(cadForm);
-            console.log(dadosForm)
+            
             document.getElementById("cad-"+tabela+"-btn").value = "Salvando..."
-            /*
+            
             // Aguarda o retorno da inserção
             const dados = await fetch("../controller/inserir-"+tabela+".php", {
                 method: "POST",
@@ -82,10 +83,10 @@ function cadastrar(tabela) {
                 document.getElementById("msgAlerta").innerHTML = resposta['msg'];
                 cadForm.reset();
                 cadModal.hide();
-                listarCarros(1);
+                listar(1, tabela);
             }
             document.getElementById("cad-"+tabela+"-btn").value = "Salvar"
-            */
+            
         })
     }
 }

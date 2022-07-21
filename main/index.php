@@ -24,7 +24,7 @@
     <!-- Resolver erro favicon.ico not found (404) -->
     <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
     <link rel="shortcut icon" href="#">
-    
+
   </head>
   <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -126,7 +126,7 @@
           <h1 id="table-title" class="h2">Carros Cadastrados</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cadCarroModal">Cadastrar Carro</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cad-carro-modal">Cadastrar Carro</button>
               <!--<button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>-->
             </div>
           </div>
@@ -221,61 +221,61 @@
         <!--<div class="row mb-3">
           <label for="cod" class="col-sm-2 col-form-label">Código</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="codigo" id="cod" required>
+            <input type="text" class="form-control" name="carro_codigo" id="cod" required>
           </div>
         </div>-->
         <div class="row mb-3">
         <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
           <div class="col-sm-10">
-                <input type="text" class="form-control" name="marca" id="mar" required>
+                <input type="text" class="form-control" name="carro_marca" id="mar" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="cor" class="col-sm-2 col-form-label">Cor:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="cor" id="cor" required>
+            <input type="text" class="form-control" name="carro_cor" id="cor" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="aro" class="col-sm-2 col-form-label">Aro:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="aro" id="aro" required>
+            <input type="text" class="form-control" name="carro_aro" id="aro" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="con" class="col-sm-2 col-form-label">Conversível:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="conversivel" id="con" required>
+            <input type="text" class="form-control" name="carro_conversivel" id="con" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="pla" class="col-sm-2 col-form-label">Placa:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="placa" id="pla" required>
+            <input type="text" class="form-control" name="carro_placa" id="pla" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="tip" class="col-sm-2 col-form-label">Tipo:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="tipo" id="tip" required>
+            <input type="text" class="form-control" name="carro_tipo" id="tip" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="pre" class="col-sm-2 col-form-label">Preço:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="preco" id="pre" required>
+            <input type="text" class="form-control" name="carro_preco" id="pre" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="mot" class="col-sm-2 col-form-label">Motor:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="motor" id="mot" required>
+            <input type="text" class="form-control" name="carro_motor" id="mot" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="vel" class="col-sm-2 col-form-label">Vel. Max:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="velocidademax" id="vel" required>
+            <input type="text" class="form-control" name="carro_velocidademax" id="vel" required>
           </div>
         </div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
