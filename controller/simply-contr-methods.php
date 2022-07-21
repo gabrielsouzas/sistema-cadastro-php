@@ -137,7 +137,7 @@
     }
 
     // Função para inserir um registro em uma tabela do banco de dados
-    function insert($dados, $tabela, $campos_bd, $id_ignorar){
+    function insert($dados, $tabela){
         
         // Inclui a conexão com o Banco
         include_once "../controller/conexao.php";
@@ -145,7 +145,7 @@
         // Valida o formulário
         $campos_preenchidos = true;
         foreach ($dados as $key => $value) {
-            if (empty($value) && ($value != $id_ignorar)) {
+            if (empty($value)) {
                 $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo $key!</div>"];
                 $campos_preenchidos = false;
                 break;
@@ -156,19 +156,17 @@
             // Cadastrar no BD
             $query = "INSERT INTO $tabela(";
 
-            foreach ($campos_bd as $campo) {
-                if ($campo != $id_ignorar) {
-                    $query .= "$campo,";
-                }
+            // Percorre o array dados com os nomes dos campos do bd e insere na query
+            foreach ($dados as $key => $value) {
+                $query .= "$key,";
             }
 
             $query = rtrim($query, ",");
             $query .= ") VALUES (";
 
-            foreach ($campos_bd as $campo) {
-                if ($campo != $id_ignorar) {
-                    $query .= ":$campo,";
-                }
+            // Percorre o array dados com os nomes dos campos do bd e insere na query com o : para fazer a referencia do bindParam
+            foreach ($dados as $key => $value) {
+                $query .= ":$key,";
             }
 
             $query = rtrim($query, ",");
@@ -177,9 +175,7 @@
             $cad_stm = $connpdo->prepare($query);
 
             foreach ($dados as $key => $value) {
-                if ($key != $id_ignorar) {
-                    $cad_stm->bindParam(":" . $campos_bd[$key] , $dados[$key]);
-                }
+                $cad_stm->bindParam(":" . $key , $dados[$key]);
             }
 
             $cad_stm->execute();
