@@ -42,52 +42,56 @@ const listar = async(pagina, tabela) => {
 
 listar(1, "carro");
 
-// Cadastro de carro no Banco de Dados em PHP
-const cadCarroForm = document.getElementById("cad-carro-form")
+// Cadastro de um registro no Banco de Dados em PHP
+function cadastrar(tabela) {
+    const cadForm = document.getElementById("cad-"+tabela+"-form")
 
-// Recebee o SELETOR da janela modal
-const cadCarroModal = new bootstrap.Modal(document.getElementById("cadCarroModal"))
+    // Recebee o SELETOR da janela modal
+    const cadModal = new bootstrap.Modal(document.getElementById("cad-"+tabela+"-modal"))
 
+    // Somente acessa o IF quando existir o SELETOR cad-tabela-form
+    if (cadForm) {
+        // Aguarda o usuário clicar no botão salvar
+        cadForm.addEventListener("submit", async(e) => {
+            // Não permitir a atualização da página
+            e.preventDefault()
 
-// Somente acessa o IF quando existir o SELETOR cad-carro-form
-if (cadCarroForm) {
-    // Aguarda o usuário clicar no botão salvar
-    cadCarroForm.addEventListener("submit", async(e) => {
-        // Não permitir a atualização da página
-        e.preventDefault()
+            // Testar se acessou a função
+            // console.log("Acessou a função!")
+            // Esse log vai aparecer em inspecionar >> console >> info 
 
-        // Testar se acessou a função
-        // console.log("Acessou a função!")
-        // Esse log vai aparecer em inspecionar >> console >> info 
+            const dadosForm = new FormData(cadForm);
+            console.log(dadosForm)
+            document.getElementById("cad-"+tabela+"-btn").value = "Salvando..."
+            /*
+            // Aguarda o retorno da inserção
+            const dados = await fetch("../controller/inserir-"+tabela+".php", {
+                method: "POST",
+                body: dadosForm
+            });
 
-        const dadosForm = new FormData(cadCarroForm);
+            const resposta = await dados.json();
 
-        document.getElementById("cad-carro-btn").value = "Salvando..."
-
-        // Aguarda o retorno da inserção
-        const dados = await fetch("../controller/inserir-carro.php", {
-            method: "POST",
-            body: dadosForm
-        });
-
-        const resposta = await dados.json();
-
-        // Acessa o IF quando não cadastrar com sucesso
-        // Neste caso ele acessa o indice status que foi criado para esse objeto e verifica se ele é falso ou verdadeiro
-        if (!resposta['status']) {
-            document.getElementById("msgAlertaErro").innerHTML = resposta['msg'];
-            document.getElementById("msgAlerta").innerHTML = "";
-        } else {
-            document.getElementById("msgAlertaErro").innerHTML = "";
-            document.getElementById("msgAlerta").innerHTML = resposta['msg'];
-            cadCarroForm.reset();
-            cadCarroModal.hide();
-            listarCarros(1);
-        }
-        document.getElementById("cad-carro-btn").value = "Salvar"
-
-    })
+            // Acessa o IF quando não cadastrar com sucesso
+            // Neste caso ele acessa o indice status que foi criado para esse objeto e verifica se ele é falso ou verdadeiro
+            if (!resposta['status']) {
+                document.getElementById("msgAlertaErro").innerHTML = resposta['msg'];
+                document.getElementById("msgAlerta").innerHTML = "";
+            } else {
+                document.getElementById("msgAlertaErro").innerHTML = "";
+                document.getElementById("msgAlerta").innerHTML = resposta['msg'];
+                cadForm.reset();
+                cadModal.hide();
+                listarCarros(1);
+            }
+            document.getElementById("cad-"+tabela+"-btn").value = "Salvar"
+            */
+        })
+    }
 }
+
+// Chamada da função de cadastro para criar o eventListener
+cadastrar("carro")
 
 // Visualizar os dados do Carro
 // async porque usa o await que espera a execução de algum retorno de dados antes de prosseguir para o próximo comando dentro da função

@@ -11,6 +11,7 @@
     <meta name="description" content="">
     <title>Venda Automotiva</title>
     
+    <!-- Bootstrap -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     
@@ -18,7 +19,12 @@
     <link href="../css/dashboard.css" rel="stylesheet">
     
     <!-- Estilo manual -->
-    <link rel="stylesheet" href="../css/estilo.css">    
+    <link rel="stylesheet" href="../css/estilo.css">   
+    
+    <!-- Resolver erro favicon.ico not found (404) -->
+    <!--<link rel="icon" href="data:;base64,iVBORw0KGgo=">-->
+    <link rel="shortcut icon" href="#">
+    
   </head>
   <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -201,7 +207,7 @@
   </div>
 
   <!-- Inicio Model Cadastrar Carro-->
-  <div class="modal fade" id="cadCarroModal" tabindex="-1" aria-labelledby="cadCarroModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cad-carro-modal" tabindex="-1" aria-labelledby="cadCarroModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
