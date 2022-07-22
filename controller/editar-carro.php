@@ -1,6 +1,7 @@
 <?php
-    // Inclui a conexão com o Banco
-    include_once "../controller/conexao.php";
+    
+    // Arquivo com o método de cadastrar insert
+    include_once "../controller/simply-contr-methods.php";
 
     // Recebe os dados do Javascript
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

@@ -126,7 +126,7 @@
           <h1 id="table-title" class="h2">Carros Cadastrados</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cad-carro-modal">Cadastrar Carro</button>
+              <button id="cadastrar-carro" type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cad-carro-modal">Cadastrar Carro</button>
               <!--<button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>-->
             </div>
           </div>
@@ -218,12 +218,12 @@
           <span id="msgAlertaErro"></span>
         <form id="cad-carro-form">
         
-        <!--<div class="row mb-3">
+        <div class="row mb-3">
           <label for="cod" class="col-sm-2 col-form-label">Código</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_codigo" id="cod" required>
+            <input type="text" class="form-control" name="carro_codigo" id="carro_codigo">
           </div>
-        </div>-->
+        </div>
         <div class="row mb-3">
         <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
           <div class="col-sm-10">

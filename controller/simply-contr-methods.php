@@ -142,10 +142,14 @@
         // Inclui a conexão com o Banco
         include_once "../controller/conexao.php";
 
+        // Pega o ID e guarda em uma variavel
+        $dados_keys = array_keys($dados);
+        $id = reset($dados_keys);
+
         // Valida o formulário
         $campos_preenchidos = true;
         foreach ($dados as $key => $value) {
-            if (empty($value)) {
+            if (empty($value) && ($key != $id)) {
                 $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo $key!</div>"];
                 $campos_preenchidos = false;
                 break;
@@ -153,12 +157,15 @@
         }
 
         if ($campos_preenchidos) {
+
             // Cadastrar no BD
             $query = "INSERT INTO $tabela(";
 
             // Percorre o array dados com os nomes dos campos do bd e insere na query
             foreach ($dados as $key => $value) {
-                $query .= "$key,";
+                if ($key != $id) {
+                    $query .= "$key,";
+                }
             }
 
             $query = rtrim($query, ",");
@@ -166,7 +173,9 @@
 
             // Percorre o array dados com os nomes dos campos do bd e insere na query com o : para fazer a referencia do bindParam
             foreach ($dados as $key => $value) {
-                $query .= ":$key,";
+                if ($key != $id) {
+                    $query .= ":$key,";
+                }
             }
 
             $query = rtrim($query, ",");
@@ -175,7 +184,9 @@
             $cad_stm = $connpdo->prepare($query);
 
             foreach ($dados as $key => $value) {
-                $cad_stm->bindParam(":" . $key , $dados[$key]);
+                if ($key != $id) {
+                    $cad_stm->bindParam(":" . $key , $dados[$key]);
+                }
             }
 
             $cad_stm->execute();
@@ -221,8 +232,8 @@
         if ($campos_preenchidos) {
             
             // Pega o ID e guarda em uma variavel
-            $id = reset($dados);
-            $id = key($id);
+            $dados_keys = array_keys($dados);
+            $id = reset($dados_keys);
 
             // Editar no BD
             $query = "UPDATE $tabela SET ";

@@ -42,6 +42,15 @@ const listar = async(pagina, tabela) => {
 
 listar(1, "carro");
 
+const btnCadastrar = document.querySelector("#cadastrar-carro");
+var operacao = "inserir";
+
+if (btnCadastrar) {
+    btnCadastrar.addEventListener("onclick", () => {
+        operacao = "inserir"
+    })
+}
+
 // Cadastro de um registro no Banco de Dados em PHP
 function cadastrar(tabela) {
     const cadForm = document.getElementById("cad-"+tabela+"-form")
@@ -66,7 +75,7 @@ function cadastrar(tabela) {
             document.getElementById("cad-"+tabela+"-btn").value = "Salvando..."
             
             // Aguarda o retorno da inserção
-            const dados = await fetch("../controller/inserir-"+tabela+".php", {
+            const dados = await fetch("../controller/"+operacao+"-"+tabela+".php", {
                 method: "POST",
                 body: dadosForm
             });
@@ -130,6 +139,7 @@ async function visCarro(codigo){
 // Editar carros
 // Recuperar os dados do banco de dados e mostrar no formulario
 async function editShow(codigo, tabela){
+    operacao = "editar"
     // Oculta a mensagem de erro caso esteja com erro
     document.getElementById("msgAlertaErroEdit").innerHTML = "";
     // Pega os dados buscados do método visualizar-carro.php (retorna um carro peo código) e coloca na constante dados
@@ -181,39 +191,43 @@ async function editShow(codigo, tabela){
 }
 
 // Editar os dados no banco de dados
-const editForm = document.getElementById('edit-carro-form');
-if (editForm) {
-    // Fica aguardando o submit do form edit-carro-form, quando clicado executa a função
-    editForm.addEventListener("submit", async (e) => {
-        // Para não recarregar a página
-        e.preventDefault();
+function editar(tabela) {
+    const editForm = document.getElementById(`cad-${tabela}-form`);
+    if (editForm) {
+        // Fica aguardando o submit do form edit-carro-form, quando clicado executa a função
+        editForm.addEventListener("submit", async (e) => {
+            // Para não recarregar a página
+            e.preventDefault();
 
-        // Coloca os dados do editForm em uma constante
-        const dadosForm = new FormData(editForm);
+            // Coloca os dados do editForm em uma constante
+            const dadosForm = new FormData(editForm);
 
-        document.getElementById("edit-carro-btn").value = "Salvando..."
+            document.getElementById(`cad-${tabela}-btn`).value = "Salvando..."
 
-        // Envia os dados para o editar-carro.php que apenas aguarda os dados pelo método POST e os insere no banco
-        const dados = await fetch("../controller/editar-carro.php", {
-            // Chama o método POST do editar-carro.php
-            method: "POST", 
-            // Passa os dados
-            body: dadosForm
+            // Envia os dados para o editar-carro.php que apenas aguarda os dados pelo método POST e os insere no banco
+            const dados = await fetch("../controller/editar-"+tabela+".php", {
+                // Chama o método POST do editar-tabela.php
+                method: "POST", 
+                // Passa os dados
+                body: dadosForm
+            });
+
+            const resposta = await dados.json();
+
+            if (!resposta['status']) {
+                document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
+            } else {
+                document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
+                listarCarros(1);
+            }
+
+            document.getElementById(`cad-${tabela}-btn`).value = "Salvar"
+
         });
-
-        const resposta = await dados.json();
-
-        if (!resposta['status']) {
-            document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
-        } else {
-            document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
-            listarCarros(1);
-        }
-
-        document.getElementById("edit-carro-btn").value = "Salvar"
-
-    });
+    }
 }
+
+//editar("carro");
 
 // Apagar o registro no BD (Obs.: A função apagCarro vem do listar-carros.php que esta carregado no index.php e é executada quando o botão Apagar é clicado)
 async function apagCarro(codigo) {
