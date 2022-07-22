@@ -5,10 +5,17 @@
     // Recebe os dados do Javascript
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+    // Tabela que vai ser feita a inserção
+    $tabela = "carro";
+
+    // Método para editar
+    // ATENÇÂO: Os nomes dos inputs devem ser iguais aos nomes dos campos no banco de dados
+    echo edit($dados, $tabela);
+
     // Valida o formulário
     /*if (empty($dados['codigo'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo código!</div>"];
-    } else*/if (empty($dados['marca'])) {
+    } elseif (empty($dados['marca'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo marca!</div>"];
     } elseif (empty($dados['cor'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo cor!</div>"];
@@ -60,5 +67,6 @@
     }
 
     echo json_encode($retorna)
+    */
     
 ?>

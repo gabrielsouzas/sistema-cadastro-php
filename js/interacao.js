@@ -129,11 +129,11 @@ async function visCarro(codigo){
 
 // Editar carros
 // Recuperar os dados do banco de dados e mostrar no formulario
-async function editCarro(codigo){
+async function editShow(codigo, tabela){
     // Oculta a mensagem de erro caso esteja com erro
     document.getElementById("msgAlertaErroEdit").innerHTML = "";
     // Pega os dados buscados do método visualizar-carro.php (retorna um carro peo código) e coloca na constante dados
-    const dados = await fetch('../controller/visualizar-carro.php?codigo=' + codigo);
+    const dados = await fetch('../controller/visualizar-'+tabela+'.php?codigo=' + codigo);
     // Aguarda os dados serem transformados em objeto e retorna na constante resposta
     const resposta = await dados.json();
 
@@ -141,13 +141,33 @@ async function editCarro(codigo){
     if (!resposta['status']) {
         document.getElementById('msgAlerta').innerHTML = resposta['msg'];
     } else {
+        
+        const cadForm = document.getElementById("cad-"+tabela+"-form")
+
         // Uma constante recebe o Modal criado no index.php por ID
-        const editModal = new bootstrap.Modal(document.getElementById("editCarroModal"));
+        const editModal = new bootstrap.Modal(document.getElementById(`cad-${tabela}-modal`));
         // O Modal é mostrado na tela
         editModal.show();
 
+        if (cadForm) {
+            const dadosForm = new FormData(cadForm);
+            
+            var campo;
+            dadosForm.forEach((number, index) => {
+                campo = document.getElementById(index.toString());
+                if (campo) {
+                    campo.value = resposta['dados'][index.toString()];
+                }
+            });
+        }
+
+        /*
+        colunas.forEach(col => {
+            document.getElementById(`edit-${col}`).value = resposta['dados'].col;
+        });*/
+
         // Aqui são carregados os dados para cada campo no Modal
-        document.getElementById('editcod').value = resposta['dados'].carro_codigo;
+        /*document.getElementById('editcod').value = resposta['dados'].carro_codigo;
         document.getElementById("editmar").value = resposta['dados'].carro_marca;
         document.getElementById("editcor").value = resposta['dados'].carro_cor;
         document.getElementById("editaro").value = resposta['dados'].carro_aro;
@@ -156,7 +176,7 @@ async function editCarro(codigo){
         document.getElementById("edittip").value = resposta['dados'].carro_tipo;
         document.getElementById("editpre").value = resposta['dados'].carro_preco;
         document.getElementById("editmot").value = resposta['dados'].carro_motor;
-        document.getElementById("editvel").value = resposta['dados'].carro_velocidademax;
+        document.getElementById("editvel").value = resposta['dados'].carro_velocidademax;*/
     }
 }
 

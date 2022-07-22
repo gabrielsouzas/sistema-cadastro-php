@@ -227,55 +227,55 @@
         <div class="row mb-3">
         <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
           <div class="col-sm-10">
-                <input type="text" class="form-control" name="carro_marca" id="mar" required>
+                <input type="text" class="form-control" name="carro_marca" id="carro_marca" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="cor" class="col-sm-2 col-form-label">Cor:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_cor" id="cor" required>
+            <input type="text" class="form-control" name="carro_cor" id="carro_cor" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="aro" class="col-sm-2 col-form-label">Aro:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_aro" id="aro" required>
+            <input type="text" class="form-control" name="carro_aro" id="carro_aro" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="con" class="col-sm-2 col-form-label">Conversível:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_conversivel" id="con" required>
+            <input type="text" class="form-control" name="carro_conversivel" id="carro_conversivel" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="pla" class="col-sm-2 col-form-label">Placa:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_placa" id="pla" required>
+            <input type="text" class="form-control" name="carro_placa" id="carro_placa" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="tip" class="col-sm-2 col-form-label">Tipo:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_tipo" id="tip" required>
+            <input type="text" class="form-control" name="carro_tipo" id="carro_tipo" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="pre" class="col-sm-2 col-form-label">Preço:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_preco" id="pre" required>
+            <input type="text" class="form-control" name="carro_preco" id="carro_preco" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="mot" class="col-sm-2 col-form-label">Motor:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_motor" id="mot" required>
+            <input type="text" class="form-control" name="carro_motor" id="carro_motor" required>
           </div>
         </div>
         <div class="row mb-3">
             <label for="vel" class="col-sm-2 col-form-label">Vel. Max:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="carro_velocidademax" id="vel" required>
+            <input type="text" class="form-control" name="carro_velocidademax" id="carro_velocidademax" required>
           </div>
         </div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -336,7 +336,7 @@
   <!-- Fim Model Visualizar Carro-->
 
   <!-- Inicio Model Editar Carro-->
-  <div class="modal fade" id="editCarroModal" tabindex="-1" aria-labelledby="editCarroModalLabel" aria-hidden="true">
+  <div class="modal fade" id="edit-carro-modal" tabindex="-1" aria-labelledby="editCarroModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -352,62 +352,62 @@
           <div class="row mb-3">
             <label for="cod" class="col-sm-2 col-form-label">Código</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="codigo" id="editcod" readonly>
+              <input type="text" class="form-control" name="carro_codigo" id="edit-carro_cod" readonly>
             </div>
           </div>
 
           <div class="row mb-3">
           <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
             <div class="col-sm-10">
-                  <input type="text" class="form-control" name="marca" id="editmar" required>
+                  <input type="text" class="form-control" name="carro_marca" id="edit-carro_mar" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="cor" class="col-sm-2 col-form-label">Cor:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="cor" id="editcor" required>
+              <input type="text" class="form-control" name="carro_cor" id="edit-carro_cor" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="aro" class="col-sm-2 col-form-label">Aro:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="aro" id="editaro" required>
+              <input type="text" class="form-control" name="carro_aro" id="edit-carro_aro" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="con" class="col-sm-2 col-form-label">Conversível:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="conversivel" id="editcon" required>
+              <input type="text" class="form-control" name="carro_conversivel" id="edit-carro_conversivel" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="pla" class="col-sm-2 col-form-label">Placa:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="placa" id="editpla" required>
+              <input type="text" class="form-control" name="carro_placa" id="edit-carro_placa" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="tip" class="col-sm-2 col-form-label">Tipo:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="tipo" id="edittip" required>
+              <input type="text" class="form-control" name="carro_tipo" id="edit-carro_tipo" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="pre" class="col-sm-2 col-form-label">Preço:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="preco" id="editpre" required>
+              <input type="text" class="form-control" name="carro_preco" id="edit-carro_preco" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="mot" class="col-sm-2 col-form-label">Motor:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="motor" id="editmot" required>
+              <input type="text" class="form-control" name="carro_motor" id="edit-carro_motor" required>
             </div>
           </div>
           <div class="row mb-3">
               <label for="vel" class="col-sm-2 col-form-label">Vel. Max:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="velocidademax" id="editvel" required>
+              <input type="text" class="form-control" name="carro_velocidademax" id="edit-carro_velocidademax" required>
             </div>
           </div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

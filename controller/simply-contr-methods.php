@@ -56,7 +56,7 @@
                     $dados .= "<td>";
                     $dados .= "<div class='d-grid gap-30 d-md-block'>";
                     $dados .= "<a id='btn-visualizar' href='#' class='btn btn-outline-primary btn-sm' onclick='visCarro($cod)'>Visualizar</a>";
-                    $dados .= "<a id='btn-editar' href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='editCarro($cod)'>Editar</a>";
+                    $dados .= "<a id='btn-editar' href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='editShow($cod, \"$table\")'>Editar</a>";
                     $dados .= "<a id='btn-apagar' href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='apagCarro($cod)'>Apagar</a>";
                     $dados .= "</div>";
                     $dados .= "</td>";
@@ -198,6 +198,69 @@
 
         echo json_encode($retorna);
 
+    }
+
+    // Função para editar um registro no banco de dados
+    function edit($dados, $tabela){
+        // Inclui a conexão com o Banco
+        include_once "../controller/conexao.php";
+
+        // Recebe os dados do Javascript
+        //$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        // Valida o formulário
+        $campos_preenchidos = true;
+        foreach ($dados as $key => $value) {
+            if (empty($value)) {
+                $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo $key!</div>"];
+                $campos_preenchidos = false;
+                break;
+            }
+        }
+
+        if ($campos_preenchidos) {
+            
+            // Pega o ID e guarda em uma variavel
+            $id = reset($dados);
+            $id = key($id);
+
+            // Editar no BD
+            $query = "UPDATE $tabela SET ";
+
+            // Percorre o array dados com os nomes dos campos do bd e insere na query
+            foreach ($dados as $key => $value) {
+                if ($key != $id) {
+                    $query .= "$key=:$key,";
+                }
+            }
+
+            // Remove a virgula que o foreach anterior inseriu a mais
+            $query = rtrim($query, ",");
+            // Insere a condição WHERE para o id da tabela
+            $query .= " WHERE $id=:$id;";
+            
+            $edit_stm = $connpdo->prepare($query);
+
+            // Insere os parametros com seus devidos valores para a execução da query
+            foreach ($dados as $key => $value) {
+                $edit_stm->bindParam(":" . $key , $dados[$key]);
+            }
+
+            // Verificar se cadastrou corretamente
+            if ($edit_stm->execute()) {
+                $retorna = ['status' => true, 'msg' => "<div class='alert alert-success' role='alert'>
+                Registro editado com Sucesso!
+            </div>"];
+            } else {
+                $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+                Erro: Registro não editado!
+            </div>"];
+            }
+            
+        }
+
+        // Retorna um JSON com os dados editados
+        echo json_encode($retorna);
     }
 
 ?>
