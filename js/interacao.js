@@ -245,7 +245,7 @@ function editar(tabela) {
                 document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
             } else {
                 document.getElementById("msgAlertaErroEdit").innerHTML = resposta['msg'];
-                listarCarros(1);
+                listar(1, tabela);
             }
 
             document.getElementById(`cad-${tabela}-btn`).value = "Salvar"
@@ -257,7 +257,7 @@ function editar(tabela) {
 //editar("carro");
 
 // Apagar o registro no BD (Obs.: A função apagCarro vem do listar-carros.php que esta carregado no index.php e é executada quando o botão Apagar é clicado)
-async function apagCarro(codigo) {
+async function apagar(codigo, tabela) {
 
     // Exibe um alerta na tela confirmando a exclusão
     var confirmar = confirm("Tem certeza que deseja excluir o registro selecionado?");
@@ -265,14 +265,14 @@ async function apagCarro(codigo) {
     // Caso a resposta seja positiva ele prossegue com a exclusão
     if (confirmar == true) {
         // Faz uma requisição para um arquivo php
-        const dados = await fetch('../controller/apagar-carro.php?codigo=' + codigo);
+        const dados = await fetch('../controller/apagar-'+tabela+'.php?codigo=' + codigo);
         const resposta = await dados.json();
 
         if (!resposta['status']) {
             document.getElementById('msgAlerta').innerHTML = resposta['msg'];
         } else {
             document.getElementById('msgAlerta').innerHTML = resposta['msg'];
-            listar(1);
+            listar(1, tabela);
         }
     } else {
         // Não exclui

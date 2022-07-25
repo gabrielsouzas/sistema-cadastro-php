@@ -1,10 +1,17 @@
 <?php
-    // Inclui a conexão com o Banco
-    include_once "../controller/conexao.php";
+    // Arquivo com o método de visualizar
+    include_once "../controller/simply-contr-methods.php";
 
     // Recebe o código do Javascript que veio do index.php
     $cod = filter_input(INPUT_GET, "codigo", FILTER_SANITIZE_NUMBER_INT);
 
+    $tabela = "carro";
+
+    $col_id = "carro_codigo";
+
+    echo delete($cod, $tabela, $col_id);
+
+    /*
     // Se a variavel código for diferente de vazia prossegue
     if (!empty($cod)) {
         // Aqui poderia ser passado diretamente, mas por questão de segurança é recomendado utilizar link
@@ -31,6 +38,6 @@
           </div>"];
     }
 
-    echo json_encode($retorna)
+    echo json_encode($retorna)*/
     
 ?>

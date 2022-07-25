@@ -57,7 +57,7 @@
                     $dados .= "<div class='d-grid gap-30 d-md-block'>";
                     $dados .= "<a id='btn-visualizar' href='#' class='btn btn-outline-primary btn-sm' onclick='visualizar($cod, \"$table\")'>Visualizar</a>";
                     $dados .= "<a id='btn-editar' href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='editShow($cod, \"$table\")'>Editar</a>";
-                    $dados .= "<a id='btn-apagar' href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='apagCarro($cod)'>Apagar</a>";
+                    $dados .= "<a id='btn-apagar' href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='apagar($cod, \"$table\")'>Apagar</a>";
                     $dados .= "</div>";
                     $dados .= "</td>";
 
@@ -305,6 +305,44 @@
             $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
             Erro: Nenhum registro encontrado!
         </div>"];
+        }
+
+        return json_encode($retorna);
+    }
+
+    // Função para apagar um registro do banco de dados
+    function delete($cod, $tabela, $col_id){
+       
+        // Inclui a conexão com o Banco
+        include_once "../controller/conexao.php";
+
+        // Recebe o código do Javascript que veio do index.php
+        //$cod = filter_input(INPUT_GET, "codigo", FILTER_SANITIZE_NUMBER_INT);
+
+        // Se a variavel código for diferente de vazia prossegue
+        if (!empty($cod)) {
+            // Aqui poderia ser passado diretamente, mas por questão de segurança é recomendado utilizar link
+            $query = "DELETE FROM $tabela WHERE $col_id=:codigo;";
+            // Cria a query
+            $del_carro = $connpdo->prepare($query);
+            
+            $del_carro->bindParam(':codigo', $cod);
+
+            if ($del_carro->execute()) {
+                $retorna = ['status' => true, 'msg' => "<div class='alert alert-success' role='alert'>
+                Registro apagado com Sucesso!
+            </div>"];
+
+            } else {
+                $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+                Registro não apagado!
+            </div>"];
+            }
+
+        } else {
+            $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+                Registro não encontrado!
+            </div>"];
         }
 
         return json_encode($retorna);
