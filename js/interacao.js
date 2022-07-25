@@ -42,12 +42,16 @@ const listar = async(pagina, tabela) => {
 
 listar(1, "carro");
 
+const tabela_vigente = "carro";
 const btnCadastrar = document.querySelector("#cadastrar-carro");
 var operacao = "inserir";
 
 if (btnCadastrar) {
-    btnCadastrar.addEventListener("onclick", () => {
+    btnCadastrar.addEventListener("click", () => {
         operacao = "inserir"
+        document.getElementById("cad-"+tabela_vigente+"-form").reset();
+        document.getElementById('carro_codigo').setAttribute("disabled", "disabled");
+            
     })
 }
 
@@ -167,6 +171,8 @@ async function visualizar(codigo, tabela){
 // Recuperar os dados do banco de dados e mostrar no formulario
 async function editShow(codigo, tabela){
     operacao = "editar"
+    document.getElementById('carro_codigo').removeAttribute("disabled");
+
     // Oculta a mensagem de erro caso esteja com erro
     document.getElementById("msgAlertaErroEdit").innerHTML = "";
     // Pega os dados buscados do método visualizar-carro.php (retorna um carro peo código) e coloca na constante dados
