@@ -105,11 +105,11 @@ cadastrar("carro")
 
 // Visualizar os dados do Carro
 // async porque usa o await que espera a execução de algum retorno de dados antes de prosseguir para o próximo comando dentro da função
-async function visCarro(codigo){
-    console.log(codigo);
+async function visualizar(codigo, tabela){
+    //console.log(codigo);
     
     // Se não utilizar o await ele não aguarda finalizar o retorno dos dados
-    const dados = await fetch('../controller/visualizar-carro.php?codigo=' + codigo);
+    const dados = await fetch('../controller/visualizar-'+tabela+'.php?codigo=' + codigo);
 
     // Recebe os dados processsados e transforma em objeto com json
     const resposta = await dados.json();
@@ -120,9 +120,36 @@ async function visCarro(codigo){
         document.getElementById('msgAlerta').innerHTML = resposta['msg']
     } else {
         document.getElementById('msgAlerta').innerHTML = ""
-        const visModal = new bootstrap.Modal(document.getElementById("visCarroModal"));
+        const visModal = new bootstrap.Modal(document.getElementById(`vis-${tabela}-modal`));
         visModal.show()
 
+        //const visForm = document.getElementById("vis-"+tabela+"-form")
+
+        const campos = [
+            "carro_codigo",
+            "carro_marca",
+            "carro_cor",
+            "carro_aro",
+            "carro_conversivel",
+            "carro_placa",
+            "carro_tipo",
+            "carro_preco",
+            "carro_motor",
+            "carro_velocidademax",
+        ];
+        
+        //if (visForm) {
+            //const dadosForm = new FormData(visForm);
+                
+            var campo;
+            campos.forEach((number, index) => {
+                campo = document.getElementById("vis_" + number.toString());
+                if (campo) {
+                    campo.innerHTML = resposta['dados'][number.toString()];
+                }
+            });
+        //}
+        /*
         document.getElementById("codCarro").innerHTML = resposta['dados'].carro_codigo;
         document.getElementById("marcaCarro").innerHTML = resposta['dados'].carro_marca;
         document.getElementById("corCarro").innerHTML = resposta['dados'].carro_cor;
@@ -132,7 +159,7 @@ async function visCarro(codigo){
         document.getElementById("tipoCarro").innerHTML = resposta['dados'].carro_tipo;
         document.getElementById("precoCarro").innerHTML = resposta['dados'].carro_preco;
         document.getElementById("motorCarro").innerHTML = resposta['dados'].carro_motor;
-        document.getElementById("velmaxCarro").innerHTML = resposta['dados'].carro_velocidademax;
+        document.getElementById("velmaxCarro").innerHTML = resposta['dados'].carro_velocidademax;*/
     }
 }
 
@@ -245,7 +272,7 @@ async function apagCarro(codigo) {
             document.getElementById('msgAlerta').innerHTML = resposta['msg'];
         } else {
             document.getElementById('msgAlerta').innerHTML = resposta['msg'];
-            listarCarros(1);
+            listar(1);
         }
     } else {
         // Não exclui

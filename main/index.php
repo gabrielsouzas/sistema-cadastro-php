@@ -289,7 +289,7 @@
   <!-- Fim Model Cadastrar Carro-->
 
   <!-- Inicio Model Visualizar Carro-->
-  <div class="modal fade" id="visCarroModal" tabindex="-1" aria-labelledby="visCarroModalLabel" aria-hidden="true">
+  <div class="modal fade" id="vis-carro-modal" tabindex="-1" aria-labelledby="visCarroModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -300,34 +300,34 @@
           <span id="msgAlertaErroVis"></span>
           <dl class="row">
             <dt class="col-sm-3">Código</dt>
-            <dd class="col-sm-9"><span id="codCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_codigo"></span></dd>
             
             <dt class="col-sm-3">Marca</dt>
-            <dd class="col-sm-9"><span id="marcaCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_marca"></span></dd>
             
             <dt class="col-sm-3">Cor</dt>
-            <dd class="col-sm-9"><span id="corCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_cor"></span></dd>
             
             <dt class="col-sm-3">Aro</dt>
-            <dd class="col-sm-9"><span id="aroCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_aro"></span></dd>
             
             <dt class="col-sm-3">Conversível</dt>
-            <dd class="col-sm-9"><span id="conversivelCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_conversivel"></span></dd>
             
             <dt class="col-sm-3">Placa</dt>
-            <dd class="col-sm-9"><span id="placaCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_placa"></span></dd>
             
             <dt class="col-sm-3">Tipo</dt>
-            <dd class="col-sm-9"><span id="tipoCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_tipo"></span></dd>
             
             <dt class="col-sm-3">Preço</dt>
-            <dd class="col-sm-9"><span id="precoCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_preco"></span></dd>
             
             <dt class="col-sm-3">Motor</dt>
-            <dd class="col-sm-9"><span id="motorCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_motor"></span></dd>
             
             <dt class="col-sm-4">Velocidade Máx.</dt>
-            <dd class="col-sm-9"><span id="velmaxCarro"></span></dd>
+            <dd class="col-sm-9"><span id="vis_carro_velocidademax"></span></dd>
           </dl>
         </div>
       </div>

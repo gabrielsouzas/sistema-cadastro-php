@@ -1,10 +1,17 @@
 <?php
-    // Inclui a conexão com o Banco
-    include_once "../controller/conexao.php";
+    // Arquivo com o método de visualizar
+    include_once "../controller/simply-contr-methods.php";
 
     // Recebe os dados do Javascript
     $codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_NUMBER_INT);
+    
+    $tabela = "carro";
 
+    $col_id = "carro_codigo";
+
+    echo visualize($codigo, $tabela, $col_id);
+    
+    /*
     // Acessa o IF quando a variável CODIGO possuir valor
     if (!empty($codigo)) {
         
@@ -32,6 +39,6 @@
       </div>"];
     }
 
-    echo json_encode($retorna)
+    echo json_encode($retorna)*/
     
 ?>

@@ -49,13 +49,13 @@
                     foreach ($linha as $value) {
                         $dados .= "<td>$value</td>";
                     }
-                    
+
                     $cod = reset($linha);
                     
 
                     $dados .= "<td>";
                     $dados .= "<div class='d-grid gap-30 d-md-block'>";
-                    $dados .= "<a id='btn-visualizar' href='#' class='btn btn-outline-primary btn-sm' onclick='visCarro($cod)'>Visualizar</a>";
+                    $dados .= "<a id='btn-visualizar' href='#' class='btn btn-outline-primary btn-sm' onclick='visualizar($cod, \"$table\")'>Visualizar</a>";
                     $dados .= "<a id='btn-editar' href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='editShow($cod, \"$table\")'>Editar</a>";
                     $dados .= "<a id='btn-apagar' href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='apagCarro($cod)'>Apagar</a>";
                     $dados .= "</div>";
@@ -272,6 +272,42 @@
 
         // Retorna um JSON com os dados editados
         echo json_encode($retorna);
+    }
+
+    // Função para visualizar u registro do banco de dados
+    function visualize($codigo, $tabela, $coluna_id){
+        // Inclui a conexão com o Banco
+        include_once "../controller/conexao.php";
+
+        // Recebe os dados do Javascript
+        //$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_NUMBER_INT);
+
+        // Acessa o IF quando a variável CODIGO possuir valor
+        if (!empty($codigo)) {
+            
+            $query = "SELECT * FROM $tabela WHERE $coluna_id = :codigo;";
+
+            $registro_retornado = $connpdo->prepare($query);
+            $registro_retornado->bindParam(':codigo', $codigo);
+            $registro_retornado->execute();
+
+            if(($registro_retornado) and ($registro_retornado->rowCount() != 0)){
+                $row = $registro_retornado->fetch(PDO::FETCH_ASSOC);
+                $retorna = ['status' => true, 'dados' => $row];
+            } else {
+                $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+            Erro: Nenhum registro encontrado!
+        </div>"];
+            }
+
+
+        } else {
+            $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+            Erro: Nenhum registro encontrado!
+        </div>"];
+        }
+
+        return json_encode($retorna);
     }
 
 ?>
